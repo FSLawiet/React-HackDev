@@ -1,6 +1,6 @@
 
-import Bannercima from './banner/Bannercima'
+import Bannerbaixo from './banner/Bannerbaixo'
 function App() {
-    return <Bannercima/>
+    return <Bannerbaixo/>
 } 
 export default App;
