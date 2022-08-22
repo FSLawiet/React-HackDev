@@ -1,4 +1,4 @@
-import './produto.css'
+import './produto.css';
 
 function Produto() 
 {

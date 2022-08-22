@@ -1,5 +1,6 @@
-import Produtoso from './Produto/produtoso';
+
+import Bannercima from './banner/Bannercima';
 function App() {
-    return <Produtoso/>
+    return <Bannercima/>
 } 
 export default App;

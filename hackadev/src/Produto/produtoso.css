@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
+
+.linkprod {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    width: 238px;
+    height: 331px;
+    color: black;
+    font-family: 'Raleway';
+    align-items: center;
+    text-align: center;
+}
+.texto {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.texto:hover {
+    opacity: 0.7;
+}
+.imagem{
+    width:220px;
+    height: 260px;
+    background: url("./imgprod/produto11.png") no-repeat;
+}
+.imagem:hover{
+    background: url("./imgprod/produto12.png") no-repeat;
+}
+.preco {
+    margin: 0px; 
+}
