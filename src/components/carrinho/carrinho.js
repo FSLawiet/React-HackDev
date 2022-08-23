@@ -1,36 +1,11 @@
 import { useEffect, useState } from "react";
 import "./carrinho.css";
-
-let productList = [
-    {
-        id: 1,
-        name: "Camisa Sol",
-        price: 50,
-
-        qty: 0,
-        total: 0,
-    },
-    {
-        id: 2,
-        name: "vestido estrelas",
-        price: 100,
-
-        qty: 0,
-        total: 0,
-    },
-    {
-        id: 3,
-        name: "camisa sol&lua",
-        price: 65,
-
-        qty: 0,
-        total: 0,
-    },
-];
+import { Produtos } from "../../Data/dataProduct";
 
 const Carrinho = () => {
-    const [produto, setProduto] = useState(productList);
+    const [produto, setProduto] = useState(Produtos);
     const [total, setTotal] = useState(0);
+    const [animation, setAnimation] = useState(false);
 
     const add = (id) => {
         const newProduto = produto.map((item) => {
@@ -65,19 +40,21 @@ const Carrinho = () => {
             setTotal(total);
         };
         finalizarCompra();
+
+        setAnimation(true);
     }, [produto]);
 
     return (
-        <div>
+        <div className={`Container__carrinho ${animation && "Active"}`}>
             {produto.map((item, index) => (
                 <div key={index}>
                     <div>
                         <div className='Imagem'>
                             <img
-                                src='/img/home1.png'
+                                src={item.image}
                                 alt='img'
                                 className='Imagem'
-                            ></img>
+                            />
                         </div>
                         <div className='name'>
                             <h4>{item.name}:</h4>
