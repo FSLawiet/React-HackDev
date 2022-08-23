@@ -1,0 +1,24 @@
+
+*{
+  padding: 0px;
+  margin: 0px;
+}
+.imgbanner1{
+  width: 1440px;
+  height: 550px;
+  position: relative;
+  background: url("./img/Banner1.png") no-repeat;
+  transition: 0.3s;
+  transition-delay: 0.7s;
+}
+.imgbanner1:hover{
+  width: 1440px;
+  height: 550px;
+  background: url("./img/Banner2.png") no-repeat;
+}
+.imgbanner2{
+  background: url("./img/Banner3.png") no-repeat;
+}
+.imgbanner2:hover{
+  background: url("./img/Banner4.png") no-repeat;
+}
