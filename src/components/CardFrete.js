@@ -1,15 +1,16 @@
 import React from "react";
 import "./CardFrete.css";
 
-function CardFrete({ id, nome, preco, previsao }) {
+function CardFrete({ key, id, nome, preco, previsao, handleFormaEnvioChange }) {
   return (
-    <label htmlFor={"envio_frete_" + id}>
+    <label htmlFor={"envio_frete_" + id} key={key}>
       <div className="card_envio">
         <input
           type="radio"
           name="envio_frete"
           id={"envio_frete_" + id}
           value={id}
+          onChange={handleFormaEnvioChange}
         />
         <p>{nome}</p>
         <p className="envio_preco">

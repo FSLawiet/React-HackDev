@@ -1,0 +1,12 @@
+.card_endereco {
+  padding: 15px;
+  line-height: 1.33;
+}
+.card_endereco input {
+  accent-color: var(--destaque);
+}
+.endereco_label {
+  line-height: 2.75;
+  font-size: 11px;
+  text-align: right;
+}
