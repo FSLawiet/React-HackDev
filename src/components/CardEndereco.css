@@ -1,9 +1,9 @@
 .card_endereco {
   padding: 15px;
+  margin: 7px 0;
   line-height: 1.33;
-}
-.card_endereco input {
-  accent-color: var(--destaque);
+  border: 1px solid var(--destaque);
+  border-radius: 15px;
 }
 .endereco_label {
   line-height: 2.75;

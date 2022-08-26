@@ -2,7 +2,6 @@ import React from "react";
 import "./CardEndereco.css";
 
 function CardEndereco({
-  key,
   id,
   nome,
   rua,
@@ -14,7 +13,7 @@ function CardEndereco({
   handleAdressChange,
 }) {
   return (
-    <label htmlFor={`address_${id}`} key={key}>
+    <label htmlFor={`address_${id}`}>
       <div className="card_endereco">
         <p>{nome}</p>
         <p>
