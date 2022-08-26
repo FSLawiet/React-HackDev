@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import CardEndereco from "./CardEndereco";
+import CardFrete from "./CardFrete";
 import "./Checkout.css";
 
 function Pedido({ pedidos }) {
@@ -86,28 +88,18 @@ function Envio({
       <h3>Destino</h3>
       <div className="address-carrousel">
         {user.adr.map((a, i) => (
-          <div className="address slide-in-right" key={i}>
-            <p>{a.nome}</p>
-            <p>
-              {a.rua}, {a.numero}
-            </p>
-            <p>
-              {a.bairro} - {a.cidade} - {a.estado}
-            </p>
-            <p>
-              <strong>{a.cep}</strong>
-            </p>
-            <p>
-              Endereço para envio{" "}
-              <input
-                type="radio"
-                name="addresss"
-                id="address"
-                value={a.id}
-                onChange={handleAdressChange}
-              />
-            </p>
-          </div>
+          <CardEndereco
+            key={i}
+            id={a.id}
+            nome={a.nome}
+            rua={a.rua}
+            numero={a.rua}
+            bairro={a.bairro}
+            cidade={a.cidade}
+            estado={a.estado}
+            cep={a.cep}
+            handleAdressChange={handleAdressChange}
+          />
         ))}
         <a className="prev">&#10094;</a>
         <a className="next">&#10095;</a>
@@ -120,56 +112,16 @@ function Envio({
       <div id="frete_cont">
         <h3>Forma de Envio</h3>
         <div id="envio_cont">
-          <div className="envio_cont3">
-            {forma_envio.map((fe, i) => (
-              <div className="f_envio" key={i}>
-                <input
-                  type="radio"
-                  name="envio_forma"
-                  id={"envio_forma_" + fe.id}
-                  value={fe.id}
-                  onChange={handleFormaEnvioChange}
-                  checked={fe.id === forma_envio_selec}
-                />
-                <label htmlFor={"envio_forma_" + fe.id} className="envio_nome">
-                  {fe.desc}
-                </label>
-                <p className="envio_preco">
-                  {fe.preco > 0 ? "R$ " + fe.preco.toFixed(2) : "Grátis"}
-                </p>
-                <p className="envio_previsao">
-                  {fe.previsao_dias > 0
-                    ? "Previsão: até " + fe.previsao_dias + " dias úteis"
-                    : ""}
-                </p>
-              </div>
-            ))}
-          </div>
-          <div className="envio_cont3">
-            {forma_frete.map((ff, i) => (
-              <div className="f_envio" key={i}>
-                <input
-                  type="radio"
-                  name="envio_frete"
-                  id={"envio_frete_" + ff.id}
-                  value={ff.id}
-                  onChange={handleFormaFreteChange}
-                  checked={ff.id === forma_frete_selec}
-                />
-                <label htmlFor={"envio_frete_" + ff.id} className="envio_nome">
-                  {ff.desc}
-                </label>
-                <p className="envio_preco">
-                  {ff.preco > 0 ? "R$ " + ff.preco.toFixed(2) : "Grátis"}
-                </p>
-                <p className="envio_previsao">
-                  {ff.previsao_dias > 0
-                    ? "Previsão: até " + ff.previsao_dias + " dias úteis"
-                    : ""}
-                </p>
-              </div>
-            ))}
-          </div>
+          {forma_envio.map((fe, i) => (
+            <CardFrete
+              key={i}
+              id={fe.id}
+              nome={fe.nome}
+              preco={fe.preco}
+              previsao={fe.previsao_dias}
+              handleFormaEnvioChange={handleFormaEnvioChange}
+            />
+          ))}
         </div>
       </div>
       <div id="info">
@@ -493,35 +445,15 @@ function Checkout() {
     },
     {
       id: 2,
-      desc: "Motoboy",
-      preco: 15.0,
-      previsao_dias: 0,
-    },
-    {
-      id: 3,
       desc: "PAC",
       preco: 32.2,
       previsao_dias: 3,
     },
-  ];
-  const forma_frete = [
-    {
-      id: 1,
-      desc: "Frete Grátis",
-      preco: 0.0,
-      previsao_dias: 0,
-    },
-    {
-      id: 2,
-      desc: "Retirar próximo ao meu endereço",
-      preco: 20.7,
-      previsao_dias: 4,
-    },
     {
       id: 3,
-      desc: "Package",
+      desc: "SEDEX",
       preco: 39.52,
-      previsao_dias: 4,
+      previsao_dias: 2,
     },
   ];
 

@@ -100,14 +100,11 @@ td.produto_img img {
 }
 
 .produto_atributo {
-  border: 1px solid #888;
   color: #666;
   padding: 4px;
-  text-align: center;
+  text-align: left;
   text-decoration: none;
-  border-radius: 12px;
   font-size: 10px;
-  margin: 0 auto;
 }
 .produto_preco {
   text-align: right;
@@ -208,12 +205,6 @@ td.produto_img img {
   margin-top: 35px;
 }
 #envio_cont {
-  display: flex;
-  flex-direction: row;
-}
-
-.envio_cont3 {
-  width: 50%;
   display: grid;
   grid-template-rows: repeat(3, 1fr);
 }
