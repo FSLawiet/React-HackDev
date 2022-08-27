@@ -2,6 +2,7 @@ import { useState } from "react";
 import CardEndereco from "./CardEndereco";
 import CardFrete from "./CardFrete";
 import "./Checkout.css";
+import FormDesconto from "./FormDesconto";
 
 function Pedido({
   pedidos,
@@ -250,12 +251,34 @@ function Envio({
 }
 function Resumo({
   subtotal,
+  desconto,
   forma_envio,
   forma_envio_selec,
   handleDesconto,
   handleFormaEnvioChange,
   validateForm,
 }) {
+  const showDesconto = () => {
+    if (desconto !== 1) {
+      return (
+        <>
+          <td className="row-div">
+            <p className="prices-header">Desconto</p>
+          </td>
+          <td className="row-div">
+            <p className="prices">- R$ {(subtotal * desconto).toFixed(2)}</p>
+          </td>
+        </>
+      );
+    } else {
+      return (
+        <td colSpan="2" className="row-div" id="desconto">
+          <FormDesconto handleDesconto={handleDesconto} />
+        </td>
+      );
+    }
+  };
+
   return (
     <section id="resumo">
       <h2>Resumo</h2>
@@ -269,23 +292,7 @@ function Resumo({
               <p className="prices">R$ {subtotal.toFixed(2)}</p>
             </td>
           </tr>
-          <tr>
-            <td colSpan="2" className="row-div" id="desconto">
-              <label htmlFor="desconto_input">
-                Possui cupom de desconto?
-                <div id="desconto_fields">
-                  <input type="text" id="desconto_input" name="desconto" />
-                  <button
-                    className="button"
-                    id="desconto_button"
-                    onClick={(e) => handleDesconto(e)}
-                  >
-                    Validar
-                  </button>
-                </div>
-              </label>
-            </td>
-          </tr>
+          <tr>{showDesconto()}</tr>
           <tr>
             <td className="row-div">
               <p className="prices-header">{forma_envio_selec.desc}</p>
@@ -304,14 +311,36 @@ function Resumo({
             </td>
             <td>
               <p className="prices total">
-                R$ {(subtotal + forma_envio_selec.preco).toFixed(2)}
+                R${" "}
+                {desconto !== 1
+                  ? (
+                      subtotal -
+                      subtotal * desconto +
+                      forma_envio_selec.preco
+                    ).toFixed(2)
+                  : (subtotal + forma_envio_selec.preco).toFixed(2)}
               </p>
               <p className="prices">
                 em até 3X de R${" "}
-                {((subtotal + forma_envio_selec.preco) / 3).toFixed(2)}
+                {desconto !== 1
+                  ? (
+                      (subtotal -
+                        subtotal * desconto +
+                        forma_envio_selec.preco) /
+                      3
+                    ).toFixed(2)
+                  : ((subtotal + forma_envio_selec.preco) / 3).toFixed(2)}
               </p>
               <p className="prices">
-                ou {(subtotal + forma_envio_selec.preco).toFixed(2)} no
+                ou R${" "}
+                {desconto !== 1
+                  ? (
+                      subtotal -
+                      subtotal * desconto +
+                      forma_envio_selec.preco
+                    ).toFixed(2)
+                  : (subtotal + forma_envio_selec.preco).toFixed(2)}{" "}
+                no
               </p>
               <p className="prices">
                 depósito ou transferência com % de desconto
@@ -425,6 +454,7 @@ function Checkout() {
     forma_envio: 1,
     obs: "",
     forma_pagamento: 0,
+    desconto: 1,
   });
 
   const handleAdressChange = (event) => {
@@ -433,6 +463,7 @@ function Checkout() {
       forma_envio: compra.forma_envio,
       obs: compra.obs,
       forma_pagamento: compra.forma_pagamento,
+      desconto: compra.desconto,
     });
   };
 
@@ -442,6 +473,7 @@ function Checkout() {
       forma_envio: parseInt(event.target.value),
       obs: compra.obs,
       forma_pagamento: compra.forma_pagamento,
+      desconto: compra.desconto,
     });
   };
 
@@ -451,6 +483,7 @@ function Checkout() {
       forma_envio: compra.forma_envio,
       obs: event.target.value,
       forma_pagamento: compra.forma_pagamento,
+      desconto: compra.desconto,
     });
   };
 
@@ -460,11 +493,53 @@ function Checkout() {
       forma_envio: compra.forma_envio,
       obs: compra.obs,
       forma_pagamento: parseInt(event.target.value),
+      desconto: compra.desconto,
     });
   };
 
-  const handleDesconto = (event) => {
+  const cupons_descontos = [
+    {
+      codigo: "cupom10",
+      desconto: 0.1,
+      validade: new Date("2022/12/31 11:59:59 PM"),
+    },
+    {
+      codigo: "cupom15",
+      desconto: 0.15,
+      validade: new Date("2022/12/31 11:59:59 PM"),
+    },
+    {
+      codigo: "cupom25",
+      desconto: 0.25,
+      validade: new Date("2022/12/31 11:59:59 PM"),
+    },
+    {
+      codigo: "cupom30",
+      desconto: 0.3,
+      validade: new Date("2022/12/31 11:59:59 PM"),
+    },
+    {
+      codigo: "cupom50",
+      desconto: 0.5,
+      validade: new Date("2022/12/31 11:59:59 PM"),
+    },
+  ];
+
+  const handleDesconto = (event, codigo) => {
     event.preventDefault();
+
+    cupons_descontos.map((cupom) => {
+      if (cupom.codigo === codigo && cupom.validade >= new Date()) {
+        console.log("Deu certo!");
+        setCompra({
+          adr_id: compra.adr_id,
+          forma_envio: compra.forma_envio,
+          obs: compra.obs,
+          forma_pagamento: compra.forma_pagamento,
+          desconto: cupom.desconto,
+        });
+      }
+    });
   };
 
   const handleCompra = (event, valid) => {
@@ -525,6 +600,7 @@ function Checkout() {
           subtotal={carrinho.reduce((a, p) => {
             return a + p.qt * p.preco;
           }, 0)}
+          desconto={compra.desconto}
           forma_envio={forma_envio}
           forma_envio_selec={
             forma_envio.filter((fe) => fe.id === compra.forma_envio)[0]

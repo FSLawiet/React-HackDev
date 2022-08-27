@@ -299,31 +299,6 @@ textarea {
   padding: 8px 3px !important;
 }
 
-#desconto i {
-  margin-right: 3px;
-  color: #666;
-}
-#desconto_fields {
-  display: block;
-  float: right;
-}
-
-#desconto_input {
-  border: 1px solid #efefef;
-  border-radius: var(--radius);
-  font-size: 10px;
-  padding: 3px 2px;
-}
-
-#desconto_button {
-  margin-left: 6px;
-  font-size: 10px;
-  font-weight: bold;
-  padding: 5px 10px;
-}
-/*
- 6px entre input e buttn (se muito espaçado, 4px)
-*/
 #submit {
   float: right;
   margin: 15px 0;
