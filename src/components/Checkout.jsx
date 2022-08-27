@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CardEndereco from "./CardEndereco";
 import CardFrete from "./CardFrete";
 import "./Checkout.css";
@@ -14,13 +14,18 @@ function Pedido({
       <span>
         <h2>Seu pedido</h2>
       </span>
-      <span>
+      <span id="return">
         <a href="#">
-          ( <i className="fa-solid fa-angle-left"></i> Voltar para o carrinho)
+          <i className="fa-solid fa-angle-left"></i> Continuar comprando
         </a>
       </span>
       <table cellSpacing="0" cellPadding="0">
         <tbody>
+          <tr>
+            <td colSpan="4" id="empty_list">
+              {pedidos.length === 0 ? "Carrinho Vazio" : ""}
+            </td>
+          </tr>
           {pedidos.map((pedido, i) => (
             <tr id="produtos_body" key={i}>
               <td className="produto_img">
@@ -31,7 +36,7 @@ function Pedido({
                 <p className="produto_ref">Referência {pedido.ref}</p>
                 {pedido.attr.map((a, i) => (
                   <p className="produto_atributo" key={i}>
-                    <span>{a.tipo}: </span>
+                    <span>{a.tipo}:&nbsp;</span>
                     <span>
                       <strong>{a.desc}</strong>
                     </span>
@@ -61,7 +66,7 @@ function Pedido({
                   </button>
                 </div>
               </td>
-              <td>
+              <td id="preco">
                 <p className="produto_preco">
                   <span className="dashed">
                     R$ {pedido.preco_int.toFixed(2)}
@@ -105,6 +110,7 @@ function Envio({
             <div key={i}>
               <CardEndereco
                 id={a.id}
+                apelido={a.apelido}
                 nome={a.nome}
                 rua={a.rua}
                 numero={a.rua}
@@ -246,6 +252,7 @@ function Resumo({
   subtotal,
   forma_envio,
   forma_envio_selec,
+  handleDesconto,
   handleFormaEnvioChange,
   validateForm,
 }) {
@@ -263,12 +270,19 @@ function Resumo({
             </td>
           </tr>
           <tr>
-            <td colSpan="2">
-              <label id="desconto" htmlFor="desconto">
-                <i className="fa-solid fa-percent"></i>
+            <td colSpan="2" className="row-div" id="desconto">
+              <label htmlFor="desconto_input">
                 Possui cupom de desconto?
-                <input type="text" id="desconto_input" name="desconto" />
-                <button>Validar</button>
+                <div id="desconto_fields">
+                  <input type="text" id="desconto_input" name="desconto" />
+                  <button
+                    className="button"
+                    id="desconto_button"
+                    onClick={(e) => handleDesconto(e)}
+                  >
+                    Validar
+                  </button>
+                </div>
               </label>
             </td>
           </tr>
@@ -384,7 +398,8 @@ function Checkout() {
     adr: [
       {
         id: 1,
-        nome: "Plataforma Dollyinho",
+        nome: "Robson",
+        apelido: "Casa",
         rua: "Alameda dos Jacarandás",
         numero: 140,
         bairro: "São Luiz",
@@ -394,7 +409,8 @@ function Checkout() {
       },
       {
         id: 2,
-        nome: "Plataforma do seu Amiguinho",
+        nome: "Celeste",
+        apelido: "Trabalho",
         rua: "Alameda dos Jacarandás",
         numero: 140,
         bairro: "São Luiz",
@@ -447,6 +463,10 @@ function Checkout() {
     });
   };
 
+  const handleDesconto = (event) => {
+    event.preventDefault();
+  };
+
   const handleCompra = (event, valid) => {
     //TODO
     event.preventDefault();
@@ -481,7 +501,9 @@ function Checkout() {
       <form
         method="POST"
         onSubmit={
-          compra.adr_id === 0 || compra.forma_pagamento === 0
+          compra.adr_id === 0 ||
+          compra.forma_pagamento === 0 ||
+          carrinho.length === 0
             ? (e) => handleCompra(e, false)
             : (e) => handleCompra(e, true)
         }
@@ -507,9 +529,14 @@ function Checkout() {
           forma_envio_selec={
             forma_envio.filter((fe) => fe.id === compra.forma_envio)[0]
           }
+          handleDesconto={handleDesconto}
           handleFormaEnvioChange={handleFormaEnvioChange}
           validateForm={
-            compra.adr_id === 0 || compra.forma_pagamento === 0 ? false : true
+            compra.adr_id === 0 ||
+            compra.forma_pagamento === 0 ||
+            carrinho.length === 0
+              ? false
+              : true
           }
         />
       </form>

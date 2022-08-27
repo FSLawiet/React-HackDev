@@ -3,6 +3,7 @@ import "./CardEndereco.css";
 
 function CardEndereco({
   id,
+  apelido,
   nome,
   rua,
   numero,
@@ -15,16 +16,19 @@ function CardEndereco({
   return (
     <label htmlFor={`address_${id}`}>
       <div className="card_endereco">
-        <p>{nome}</p>
+        <p>
+          <em>{apelido}</em>
+        </p>
+        <p>
+          <strong>{nome}</strong>
+        </p>
         <p>
           {rua}, {numero}
         </p>
         <p>
           {bairro} - {cidade} - {estado}
         </p>
-        <p>
-          <strong>{cep}</strong>
-        </p>
+        <p>{cep}</p>
         <p className="endereco_label">
           Endereço para envio{" "}
           <input

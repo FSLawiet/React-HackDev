@@ -43,6 +43,14 @@ td {
   display: inline-block;
 }
 
+#pedido span#return {
+  float: right;
+}
+
+#pedido span#return a {
+  font-size: 14px;
+}
+
 #pedido a {
   font-size: 10px;
   color: #666;
@@ -57,14 +65,22 @@ td {
 #pedido table td {
   padding: 12px;
 }
+#pedido table td#preco {
+  width: 120px;
+}
+#pedido table td#empty_list {
+  padding: 0;
+  text-align: center;
+  font-style: italic;
+  line-height: 8.5;
+}
 
 .produto_img {
   position: relative;
-  width: 45px;
 }
 
 .produto_img img {
-  width: 175px;
+  width: 145px;
   height: auto;
 }
 
@@ -77,13 +93,15 @@ td {
   font-size: 12px;
   color: #747474;
   line-height: 1.85;
+  margin-bottom: 4px;
 }
 
 .produto_atributo {
   text-align: left;
   text-decoration: none;
-  font-size: 14px;
-  line-height: 1.85;
+  font-size: 12px;
+  line-height: 2;
+  /*margin: 8px 0;*/
 }
 
 .delete_produto {
@@ -96,7 +114,7 @@ td {
   font-size: 14px;
 }
 .produto_total {
-  margin-top: 20px;
+  margin-top: 25px;
   font-weight: bold;
 }
 .dashed {
@@ -108,10 +126,11 @@ td {
 .stepper {
   display: flex;
   border: 1px solid #e8e8e9;
-  border-radius: 15px;
+  border-radius: var(--radius);
   background-color: #f8f8f9;
   height: 32px;
   width: 88px;
+  margin-top: 6px;
 }
 
 .stepper__button {
@@ -145,7 +164,7 @@ td {
 
 details {
   border: 1px solid #ccc;
-  border-radius: 15px;
+  border-radius: var(--radius);
   margin: 15px 0;
 }
 details summary::-webkit-details-marker {
@@ -162,12 +181,12 @@ details summary {
 }
 details summary::after {
   content: "+";
-  color: black;
   position: absolute;
   padding-right: 5px;
   font-size: 2rem;
   line-height: 0;
   margin-top: 0.75rem;
+  margin-right: 12px;
   right: 0;
   font-weight: 200;
   transform-origin: center;
@@ -201,6 +220,9 @@ details summary::-webkit-details-marker {
 #endereco_cont {
   padding: 15px;
 }
+#endereco_cont:last-child {
+  border-bottom: none;
+}
 #pagamentos {
   padding: 15px;
 }
@@ -231,7 +253,7 @@ textarea {
   width: 100%;
   padding: 15px;
   border: 1px solid var(--destaque);
-  border-radius: 15px;
+  border-radius: var(--radius);
 }
 
 /* Compomente Resumo */
@@ -240,63 +262,69 @@ textarea {
 }
 
 #resumo table {
-  width: 92%;
   margin: 0 auto;
+  width: 98%;
+  line-height: 1.75;
 }
 
 #resumo table tbody tr .row-div {
-  border-bottom: 1px solid #999;
+  margin: 7px 0;
+  padding: 3px;
+  border-bottom: 1px solid #efefef;
 }
 
-#resumo table tbody tr td.points {
-  text-align: center;
-  padding: 8px;
-  background-color: white;
-  color: #666;
-  font-size: 11px;
-  border: 2px dashed var(--destaque);
-}
 #resumo table tbody tr td p.prices-header {
-  font-size: 10px;
   color: #666;
+  font-size: 12px;
 }
 #resumo table tbody tr td p.prices {
   text-align: right;
-  font-size: 10px;
   color: #666;
+  font-size: 12px;
 }
 #resumo table tbody tr td p.total-header {
   font-size: 14px;
-  color: black;
+  color: #111;
 }
 #resumo table tbody tr td p.total {
-  font-weight: bolder;
+  font-weight: bold;
   font-size: 16px;
-  color: black;
-}
-#resumo table tbody tr td.points img {
-  width: 20px;
-  height: auto;
-  vertical-align: middle;
-}
-
-#resumo table tbody tr td.points p {
-  padding: 0 5px 0 8px;
-  display: inline-block;
+  color: #111;
 }
 
 #desconto {
   font-weight: bold;
-  font-size: 13px;
+  font-size: 12px;
+  color: #666;
+  padding: 8px 3px !important;
 }
 
 #desconto i {
-  padding: 3px 4px;
-  border: #666 2px solid;
-  border-radius: 50%;
+  margin-right: 3px;
   color: #666;
 }
+#desconto_fields {
+  display: block;
+  float: right;
+}
 
+#desconto_input {
+  border: 1px solid #efefef;
+  border-radius: var(--radius);
+  font-size: 10px;
+  padding: 3px 2px;
+}
+
+#desconto_button {
+  margin-left: 6px;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 5px 10px;
+}
+/*
+ 6px entre input e buttn (se muito espaçado, 4px)
+*/
 #submit {
   float: right;
+  margin: 15px 0;
 }

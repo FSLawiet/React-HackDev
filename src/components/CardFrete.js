@@ -20,7 +20,7 @@ function CardFrete({
           onChange={handleFormaEnvioChange}
           checked={checked === id}
         />
-        <p>{nome}</p>
+        <span className="envio_nome">{nome}</span>
         <p className="envio_preco">
           {parseFloat(preco) !== 0
             ? `R$ ${parseFloat(preco).toFixed(2)}`
@@ -29,7 +29,7 @@ function CardFrete({
         <p className="envio_previsao">
           {parseInt(previsao) > 1
             ? `Previsão: até ${parseInt(previsao)} dias úteis`
-            : ""}{" "}
+            : ""}
         </p>
       </div>
     </label>
