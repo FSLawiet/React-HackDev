@@ -7,14 +7,22 @@ import "./Navbar.css";
 import Logo from "./img/Hoshi.svg";
 import { useState } from "react";
 import Carrinho from "../carrinho/carrinho";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
     const [openModal, setOpenModal] = useState(false);
 
+    const pathPagina = useNavigate();
+
     return (
         <>
             <nav className='NavBar'>
-                <div>
+                <div
+                    onClick={() => {
+                        pathPagina("/");
+                    }}
+                    style={{ cursor: "pointer" }}
+                >
                     <img className='NavBar__Logo' src={Logo} alt='' />
                 </div>
                 <ul className='NavBar__Lista'>
@@ -31,7 +39,10 @@ function Navbar() {
                     <IoSearchOutline />
                 </div>
                 <div className='NavBar__Icons'>
-                    <IoPersonOutline />
+                    <IoPersonOutline
+                        onClick={() => pathPagina("/login")}
+                        style={{ cursor: "pointer" }}
+                    />
 
                     <IoBagOutline
                         className='NavBar__Icon__bag'

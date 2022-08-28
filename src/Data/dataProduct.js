@@ -3,27 +3,72 @@ export const Produtos = [
         id: 1,
         name: "Camisa Sol",
         price: 50,
-        image: "https://images.unsplash.com/photo-1660816610637-14a1a8be79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=740&q=80",
+        image: "/img/produto1.png",
 
-        qty: 0,
-        total: 0,
+        sizeSelect: "",
     },
     {
         id: 2,
         name: "vestido estrelas",
         price: 100,
-        image: "https://images.unsplash.com/photo-1660816610637-14a1a8be79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=740&q=80",
+        image: "/img/produto2.png",
 
-        qty: 0,
-        total: 0,
+        sizeSelect: "",
     },
     {
         id: 3,
         name: "camisa sol&lua",
         price: 65,
-        image: "https://images.unsplash.com/photo-1660816610637-14a1a8be79e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=740&q=80",
+        image: "/img/produto3.png",
 
-        qty: 0,
-        total: 0,
+        sizeSelect: "",
+    },
+    {
+        id: 4,
+        name: "camisa sol&lua",
+        price: 65,
+        image: "/img/produto4.png",
+
+        sizeSelect: "",
+    },
+    {
+        id: 5,
+        name: "camisa sol&lua",
+        price: 65,
+        image: "/img/produto5.png",
+
+        sizeSelect: "",
+    },
+    {
+        id: 6,
+        name: "camisa sol&lua",
+        price: 65,
+        image: "/img/produto6.png",
+
+        sizeSelect: "",
+    },
+    {
+        id: 7,
+        name: "camisa sol&lua",
+        price: 65,
+        image: "/img/produto7.png",
+
+        sizeSelect: "",
+    },
+    {
+        id: 8,
+        name: "camisa sol&lua",
+        price: 65,
+        image: "/img/produto8.png",
+
+        sizeSelect: "",
+    },
+    {
+        id: 9,
+        name: "camisa sol&lua",
+        price: 65,
+        image: "/img/produto9.png",
+
+        sizeSelect: "",
     },
 ];

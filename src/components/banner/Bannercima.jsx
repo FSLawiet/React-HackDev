@@ -2,7 +2,7 @@ import "./banner.css";
 function Bannercima() {
     return (
         <>
-            <div class='imgbanner1'></div>
+            <div className='imgbanner1'></div>
         </>
     );
 }

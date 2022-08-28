@@ -5,8 +5,8 @@
 
     height: 75vh;
 
-    right: 0;
-    top: 100px;
+    right: 10px;
+    top: 55px;
 
     padding: 50px;
 
@@ -23,6 +23,10 @@
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
+.Teste1234 {
+    display: flex;
+}
+
 .name {
     width: 315px;
     height: 54px;
@@ -32,7 +36,7 @@
     font-family: "Raleway";
     font-style: normal;
     font-weight: 400;
-    font-size: 35px;
+    font-size: 1rem;
     line-height: 41px;
     text-align: center;
 
@@ -54,6 +58,37 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
+.Adicionar-Remover {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    column-gap: 5px;
+
+    width: 100px;
+
+    margin: auto;
+
+    border-radius: 20px;
+
+    background-color: #dadada;
+}
+
+.Qty__Button {
+    width: 30px;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    border: none;
+    background-color: #dadada;
+
+    cursor: pointer;
+}
+
+.Qty__Button:hover {
+    color: blueviolet;
+}
+
 .total-parcial {
     width: 130px;
     height: 31px;
@@ -69,41 +104,30 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
-.col-qty,
-.Adicionar-Remover {
-    width: 148px;
-    height: 67px;
-    left: 279px;
-    top: 200px;
-}
-
 .valorTotal {
-    width: 130px;
-    height: 31px;
-    left: 585px;
-    top: 38px;
+    display: flex;
+    flex-direction: column;
 
-    font-family: "Raleway";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 28px;
+    font-size: 1rem;
     line-height: 33px;
 
     color: rgba(0, 0, 0, 0.8);
+    background-color: #dadada;
 }
 
 .Imagem {
-    width: 220px;
-    height: 260px;
+    width: 100px;
     left: 0px;
     top: 0px;
 }
 
 .finalizar {
-    box-sizing: border-box;
+    width: 90%;
 
-    width: 661px;
-    height: 48px;
+    margin: auto;
+    margin-bottom: 15px;
+    padding: 5px 10px;
+
     left: 40px;
     top: 99px;
 

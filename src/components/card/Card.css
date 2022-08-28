@@ -1,0 +1,11 @@
+.Card__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.Card__Image {
+    width: 200px;
+}

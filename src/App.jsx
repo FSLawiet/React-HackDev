@@ -1,13 +1,14 @@
 import React from "react";
 import Navbar from "./components/navbar/Navbar";
-import Bannercima from "./components/banner/Bannercima";
-import Footer from "./components/footer/footer";
+import ReoutesPages from "./Routes/routes";
+import "./App.style.css";
+import Footer from "./components/footer/Footer";
 
 function App() {
     return (
         <>
             <Navbar />
-            <Bannercima />
+            <ReoutesPages />
             <Footer />
         </>
     );

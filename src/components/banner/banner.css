@@ -1,23 +1,33 @@
 .imgbanner1 {
-    height: 550px;
+    height: 30vh;
     position: relative;
-    background-image: url("./img/Banner1.png");
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    transition: 0.3s;
-    transition-delay: 0.7s;
+
+    animation: BannerAnimation 30s infinite;
 }
-.imgbanner1:hover {
-    height: 550px;
-    background-image: url("./img/Banner2.png");
+
+@keyframes BannerAnimation {
+    0% {
+        background-image: url("./img/Banner1.png");
+    }
+    25% {
+        background-image: url("./img/Banner2.png");
+    }
+    50% {
+        background-image: url("./img/Banner3.png");
+    }
+    75% {
+        background-image: url("./img/Banner4.png");
+    }
+    100% {
+        background-image: url("./img/Banner1.png");
+    }
 }
-.imgbanner2 {
-    background-image: url("./img/Banner3.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-.imgbanner2:hover {
-    background-image: url("./img/Banner4.png");
+
+@media screen and (min-width: 1000px) {
+    .imgbanner1 {
+        height: 550px;
+    }
 }
