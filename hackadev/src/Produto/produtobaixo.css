@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
+* {
+    background-color: #f4f3f3;
+}
+.produtobaixo {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.linkprod {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    width: 238px;
+    height: 331px;
+    color: black;
+    font-family: 'Raleway';
+    align-items: center;
+    text-align: center;
+}
+.texto {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+.texto:hover {
+    opacity: 0.7;
+}
+.preco {
+    margin: 0px; 
+}
+.imagem6{
+    width:220px;
+    height: 260px;
+    background: url("./imgprod/produto61.png") no-repeat;
+}
+.imagem6:hover{
+    background: url("./imgprod/produto62.png") no-repeat;
+}
+.imagem7{
+    width:220px;
+    height: 260px;
+    background: url("./imgprod/produto70.png") no-repeat;
+}
+.imagem7:hover{
+    background: url("./imgprod/produto70.png") no-repeat;
+}
+.imagem8{
+    width:220px;
+    height: 260px;
+    background: url("./imgprod/produto80.png") no-repeat;
+}
+.imagem8:hover{
+    background: url("./imgprod/produto80.png") no-repeat;
+}
+.imagem9{
+    width:220px;
+    height: 260px;
+    background: url("./imgprod/produto91.png") no-repeat;
+}
+.imagem9:hover{
+    background: url("./imgprod/produto92.png") no-repeat;
+}
+.imagem0{
+    width:220px;
+    height: 260px;
+    background: url("./imgprod/produto100.png") no-repeat;
+}
+.imagem0:hover{
+    background: url("./imgprod/produto100.png") no-repeat;
+}

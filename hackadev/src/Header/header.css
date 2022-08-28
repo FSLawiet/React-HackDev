@@ -6,6 +6,7 @@
   
 .listaa {
     color: black;
+    background-color: #FFFFFF;
     text-decoration: none;
     transition: 0.3s;
   }
@@ -15,6 +16,7 @@
   }
   
 .logo {
+    background-color: #FFFFFF;
     font-size: 42px;
     font-family: 'Raleway';
     letter-spacing: 4px;
@@ -39,6 +41,7 @@
   border-radius: 20px;
 }
 .buscar {
+  background-color: #FFFFFF;
   width: 108px;
   height: 28px;
   left: 30px;
@@ -55,11 +58,14 @@
   color: rgba(0, 0, 0, 0.46);
 }
 #busca img{
+  background-color: #FFFFFF;
   width: 30px;
   height: 30px;
 }
   
 .navbar {
+  margin: 0px;
+  padding: 0px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -68,14 +74,9 @@
   height: 14vh;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
-  
-main {
-    background: url("bg.jpg") no-repeat center center;
-    background-size: cover;
-    height: 92vh;
-  }
-  
+    
 .nav-list {
+    background-color: #FFFFFF;
     list-style: none;
     display: flex;
   
@@ -84,14 +85,17 @@ main {
 .nav-list li {
     letter-spacing: 3px;
     margin-left: 32px;
+    background-color: #FFFFFF;
   }
 .nav-icons {
+  background-color: #FFFFFF;
     list-style: none;
     display: flex;
   
   }
   
 .nav-icons img {
+  background-color: #FFFFFF;
     width: 50px;
     margin-left: 32px;
   }
@@ -101,6 +105,7 @@ main {
       overflow-x: hidden;
     }
     .nav-list {
+      background-color: #FFFFFF;
       position: absolute;
       top: 8vh;
       right: 0;
@@ -111,9 +116,10 @@ main {
       align-items: center;
       justify-content: space-around;
       transform: translateX(100%);
-      transition: transform 0.3s ease-in;
+      transition:0.3s ease-in;
     }
     .nav-list li {
+      background-color: #FFFFFF;
       margin-left: 0;
       opacity: 0;
     }
@@ -121,7 +127,12 @@ main {
       display: block;
     }
   }
-  
+  .lista {
+    background-color: #FFFFFF;
+  }
+    .link {
+      background-color: #FFFFFF;
+    }
   .nav-list.active {
     transform: translateX(0);
   }

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
+
+.rodape{
+    margin-top: 10px;
+    margin:0px ;
+    padding: 0px;
+    background-color: white;
+}
+#final {
+    margin-top: 10px;
+    margin:0px ;
+    padding: 0px;
+    background-color: white;
+}
+#opcoesfinal {
+    font-family: 'Raleway';
+    margin-top: 10px;
+    margin-inline:10px ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}
+.opcoes {
+    margin-top: 20px;
+    background-color: white;
+    justify-content: space-around;
+}
+.escrita{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.redes {
+    font-family: 'Raleway';
+    background-color: white;
+    display:block;
+    justify-content: space-around;
+    align-items: center;
+}
+.iconrede{
+    background-color: white;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.redes img {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.linha {
+    height: 5px;
+    display: flex;
+    color: black;
+}
+.fim {
+    font-family: 'Raleway';
+    margin-top: 10px;
+    margin-inline:10px ;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+}

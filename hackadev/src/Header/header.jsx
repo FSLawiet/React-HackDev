@@ -18,13 +18,13 @@ function Header()
             </a>  
         </div>
         <ul class="nav-icons">
-          <li>
-            <a href="https://imgbox.com/dnEq86dc" >
+          <li class ="lista">
+            <a class ="link" href="https://imgbox.com/dnEq86dc" >
               <img src="https://thumbs2.imgbox.com/a7/63/dnEq86dc_t.png" alt="bag"/>
             </a>  
           </li>
-          <li>
-            <a href="https://imgbox.com/spKtIpN5">
+          <li class ="lista">
+            <a class ="link" href="https://imgbox.com/spKtIpN5">
               <img src="https://thumbs2.imgbox.com/68/aa/spKtIpN5_t.png" alt="user"/>
             </a>
           </li>

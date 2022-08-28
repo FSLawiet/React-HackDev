@@ -3,7 +3,12 @@
   padding: 0px;
   margin: 0px;
 }
+
 .imgbanner1{
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
   width: 1440px;
   height: 550px;
   position: relative;
@@ -17,8 +22,16 @@
   background: url("./img/Banner2.png") no-repeat;
 }
 .imgbanner2{
+  margin-top: 10px;
+  width: 1440px;
+  height: 550px;
+  position: relative;
   background: url("./img/Banner3.png") no-repeat;
+  transition: 0.3s;
+  transition-delay: 0.7s;
 }
 .imgbanner2:hover{
+  width: 1440px;
+  height: 550px;
   background: url("./img/Banner4.png") no-repeat;
 }

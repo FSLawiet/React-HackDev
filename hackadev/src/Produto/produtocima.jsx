@@ -1,11 +1,11 @@
-import './produtobaixo.css'
-function Produtobaixo() 
+import './produtocima.css'
+function Produtocima() 
 {
-    return <div class="produtobaixo">
+    return <div class="produtocima">
         <figure class="contprod">
          <a class="linkprod"  href="/produto.html">
              <div class="card">
-                <div class="imagem6"></div>
+                <div class="imagem1"></div>
                  <h3 class="texto">Camisa espacial</h3>
              </div>
              <div class="preco">
@@ -16,7 +16,7 @@ function Produtobaixo()
      <figure class="contprod">
          <a class="linkprod"  href="/produto.html">
              <div class="card">
-                <div class="imagem7"></div>
+                <div class="imagem2"></div>
                  <h3 class="texto">Camisa espacial</h3>
              </div>
              <div class="preco">
@@ -27,7 +27,7 @@ function Produtobaixo()
      <figure class="contprod">
          <a class="linkprod"  href="/produto.html">
              <div class="card">
-                <div class="imagem8"></div>
+                <div class="imagem3"></div>
                  <h3 class="texto">Camisa espacial</h3>
              </div>
              <div class="preco">
@@ -38,7 +38,7 @@ function Produtobaixo()
      <figure class="contprod">
          <a class="linkprod"  href="/produto.html">
              <div class="card">
-                <div class="imagem9"></div>
+                <div class="imagem4"></div>
                  <h3 class="texto">Camisa espacial</h3>
              </div>
              <div class="preco">
@@ -49,7 +49,7 @@ function Produtobaixo()
      <figure class="contprod">
          <a class="linkprod"  href="/produto.html">
              <div class="card">
-                <div class="imagem0"></div>
+                <div class="imagem5"></div>
                  <h3 class="texto">Camisa espacial</h3>
              </div>
              <div class="preco">
@@ -59,4 +59,4 @@ function Produtobaixo()
      </figure>
     </div>
 } 
-export default Produtobaixo
+export default Produtocima
