@@ -10,7 +10,7 @@ function ItemCarrinho({ item }) {
 
     useEffect(() => {
         setTotal(mult * item.price);
-    }, [mult]);
+    }, [mult, item]);
 
     return (
         <>

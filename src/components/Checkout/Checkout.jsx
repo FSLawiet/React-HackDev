@@ -16,10 +16,10 @@ function Pedido({
                 <h2>Seu pedido</h2>
             </span>
             <span id='return'>
-                <a href='#'>
+                <div>
                     <i className='fa-solid fa-angle-left'></i> Continuar
                     comprando
-                </a>
+                </div>
             </span>
             <table cellSpacing='0' cellPadding='0'>
                 <tbody>
@@ -89,14 +89,14 @@ function Pedido({
                                 </p>
                             </td>
                             <td>
-                                <a
+                                <div
                                     onClick={() =>
                                         handleDeletePedido(pedido.ref)
                                     }
                                     className='delete_produto'
                                 >
                                     <i className='fa-solid fa-xl fa-xmark'></i>
-                                </a>
+                                </div>
                             </td>
                         </tr>
                     ))}
@@ -457,7 +457,7 @@ function Checkout() {
         setCarrinho(updatedCarrinho);
     };
 
-    const [user, setUser] = useState({
+    const [user] = useState({
         adr: [
             {
                 id: 1,
@@ -562,7 +562,7 @@ function Checkout() {
     const handleDesconto = (event, codigo) => {
         event.preventDefault();
 
-        cupons_descontos.map((cupom) => {
+        cupons_descontos.foreach((cupom) => {
             if (cupom.codigo === codigo && cupom.validade >= new Date()) {
                 console.log("Deu certo!");
                 setCompra({
