@@ -6,7 +6,7 @@ function Produtobaixo()
          <a class="linkprod"  href="/produto.html">
              <div class="card">
                 <div class="imagem6"></div>
-                 <h3 class="texto">Camisa gêSmeos</h3>
+                 <h3 class="texto">Camisa gêmeos</h3>
              </div>
              <div class="preco">
                  <p class="texto">R$ 99,90</p>
