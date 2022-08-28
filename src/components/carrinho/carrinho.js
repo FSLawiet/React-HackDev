@@ -1,11 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import "./carrinho.css";
 import { ProductContext } from "../../context/produtosContext";
+import ItemCarrinho from "../itemCarrinho/index";
+import { useNavigate } from "react-router-dom";
 
 const Carrinho = () => {
     const { selectItens } = useContext(ProductContext);
 
-    const [total, setTotal] = useState(0);
+    const navigate = useNavigate();
+
     const [animation, setAnimation] = useState(false);
 
     useEffect(() => {
@@ -14,42 +17,25 @@ const Carrinho = () => {
 
     return (
         <div className={`Container__carrinho ${animation && "Active"}`}>
-            {selectItens.map((item, index) => (
-                <div key={index}>
-                    <div className='Teste1234'>
-                        <div className='Imagem'>
-                            <img
-                                src={item.image}
-                                alt='img'
-                                className='Imagem'
-                            />
-                        </div>
-                        <div className='name'>
-                            <h4>{item.name}:</h4>
-                            <div className='price'>R$ {item.price}</div>
-                            <p>{item.sizeSelect}</p>
-                            <div className='Adicionar-Remover'>
-                                <button
-                                    className='Qty__Button'
-                                    disabled={item.qty < 1}
-                                >
-                                    -
-                                </button>
-                                <div className='col-qty'>{item.qty}</div>
-
-                                <button className='Qty__Button'>+</button>
-                            </div>
-                        </div>
+            {selectItens.length > 0 ? (
+                <>
+                    {selectItens.map((item, index) => (
+                        <ItemCarrinho item={item} key={index} />
+                    ))}
+                    <div className='valorTotal'>
+                        <h3>Valor Total: R$</h3>
+                        <button
+                            className='finalizar'
+                            onClick={() => navigate("/checkout")}
+                        >
+                            {" "}
+                            Finalizar Compra{" "}
+                        </button>
                     </div>
-                    <div className='total-parcial'>Total:{item.total}</div>
-
-                    <hr />
-                </div>
-            ))}
-            <div className='valorTotal'>
-                <h3>Valor Total: R${total}</h3>
-                <button className='finalizar'> Finalizar Compra </button>
-            </div>
+                </>
+            ) : (
+                <h2>Sem itens!</h2>
+            )}
         </div>
     );
 };

@@ -5,14 +5,30 @@ import {
 } from "react-icons/io5";
 import "./Navbar.css";
 import Logo from "./img/Hoshi.svg";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Carrinho from "../carrinho/carrinho";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
     const [openModal, setOpenModal] = useState(false);
+    const cartRef = useRef();
 
     const pathPagina = useNavigate();
+
+    useEffect(() => {
+        function handleClick(e) {
+            if (
+                cartRef.current &&
+                openModal &&
+                !cartRef.current.contains(e.target)
+            )
+                setOpenModal(false);
+        }
+
+        window.addEventListener("click", handleClick);
+
+        return () => window.removeEventListener("click", handleClick);
+    }, [openModal]);
 
     return (
         <>
@@ -38,7 +54,7 @@ function Navbar() {
                     />
                     <IoSearchOutline />
                 </div>
-                <div className='NavBar__Icons'>
+                <div className='NavBar__Icons' ref={cartRef}>
                     <IoPersonOutline
                         onClick={() => pathPagina("/login")}
                         style={{ cursor: "pointer" }}

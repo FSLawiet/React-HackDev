@@ -18,9 +18,17 @@ function ProductContexProvider({ children }) {
         });
     }
 
+    function removeItemCart(item) {
+        const newSelectItens = selectItens.filter(
+            (element) => item !== element.id && element
+        );
+
+        setSelectItens(newSelectItens);
+    }
+
     return (
         <ProductContext.Provider
-            value={{ selectItens, setSelectItens, addItemCart }}
+            value={{ selectItens, setSelectItens, addItemCart, removeItemCart }}
         >
             {children}
         </ProductContext.Provider>

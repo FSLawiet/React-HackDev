@@ -42,19 +42,39 @@ const Produto = ({ item }) => {
                 </div>
                 <div className='tamanhos'>
                     <p>Escolha o tamanho</p>
-                    <form onSubmit={(e) => handleSizeSelect(e, item)}>
-                        <input type='radio' name='size' id='G' value={"G"} />
-                        <label className='Size__Button' htmlFor='G'>
-                            G
-                        </label>
-                        <input type='radio' name='size' id='M' value={"M"} />
-                        <label className='Size__Button' htmlFor='M'>
-                            M
-                        </label>
-                        <input type='radio' name='size' id='P' value={"P"} />
-                        <label className='Size__Button' htmlFor='P'>
-                            P
-                        </label>
+                    <form
+                        onSubmit={(e) => handleSizeSelect(e, item)}
+                        className='Form__container'
+                    >
+                        <section className='Section__buttons'>
+                            <input
+                                type='radio'
+                                name='size'
+                                id='G'
+                                value={"G"}
+                            />
+                            <label className='Size__Button' htmlFor='G'>
+                                G
+                            </label>
+                            <input
+                                type='radio'
+                                name='size'
+                                id='M'
+                                value={"M"}
+                            />
+                            <label className='Size__Button' htmlFor='M'>
+                                M
+                            </label>
+                            <input
+                                type='radio'
+                                name='size'
+                                id='P'
+                                value={"P"}
+                            />
+                            <label className='Size__Button' htmlFor='P'>
+                                P
+                            </label>
+                        </section>
                         <Button type={"submit"} />
                     </form>
                 </div>
