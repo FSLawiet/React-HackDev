@@ -3,9 +3,12 @@ import React, { useContext } from "react";
 import "./Produto.css";
 import Button from "./Button";
 import { ProductContext } from "../../context/produtosContext";
+import { useNavigate } from "react-router-dom";
 
 const Produto = ({ item }) => {
     const { addItemCart } = useContext(ProductContext);
+
+    const navigate = useNavigate();
 
     function handleSizeSelect(e, item) {
         e.preventDefault();
@@ -75,7 +78,10 @@ const Produto = ({ item }) => {
                                 P
                             </label>
                         </section>
-                        <Button type={"submit"} />
+                        <Button type={"submit"}>Adicionar à Sacola</Button>
+                        <Button onClick={() => navigate("/")}>
+                            Continuar Comprando
+                        </Button>
                     </form>
                 </div>
             </div>

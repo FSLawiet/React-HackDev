@@ -5,11 +5,14 @@ import {
 } from "react-icons/io5";
 import "./Navbar.css";
 import Logo from "./img/Hoshi.svg";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Carrinho from "../carrinho/carrinho";
 import { useNavigate } from "react-router-dom";
+import { ProductContext } from "../../context/produtosContext";
 
 function Navbar() {
+    const { selectItens } = useContext(ProductContext);
+
     const [openModal, setOpenModal] = useState(false);
     const cartRef = useRef();
 
@@ -59,11 +62,25 @@ function Navbar() {
                         onClick={() => pathPagina("/login")}
                         style={{ cursor: "pointer" }}
                     />
-
-                    <IoBagOutline
-                        className='NavBar__Icon__bag'
-                        onClick={() => setOpenModal(!openModal)}
-                    />
+                    <div>
+                        <IoBagOutline
+                            className='NavBar__Icon__bag'
+                            onClick={() => setOpenModal(!openModal)}
+                        />
+                        <sup
+                            style={{
+                                backgroundColor: "#c1b0ec",
+                                borderRadius: "50%",
+                                display: "inline-block",
+                                width: "15.5px",
+                                height: "15.5px",
+                                textAlign: "center",
+                                fontSize: "0.8rem",
+                            }}
+                        >
+                            {selectItens.length}
+                        </sup>
+                    </div>
                 </div>
                 {openModal && <Carrinho />}
             </nav>
