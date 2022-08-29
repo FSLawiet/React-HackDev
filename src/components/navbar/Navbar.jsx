@@ -32,7 +32,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className='NavBar'>
+            <nav className='NavBar' ref={cartRef}>
                 <div
                     onClick={() => {
                         pathPagina("/");
@@ -54,7 +54,7 @@ function Navbar() {
                     />
                     <IoSearchOutline />
                 </div>
-                <div className='NavBar__Icons' ref={cartRef}>
+                <div className='NavBar__Icons'>
                     <IoPersonOutline
                         onClick={() => pathPagina("/login")}
                         style={{ cursor: "pointer" }}
