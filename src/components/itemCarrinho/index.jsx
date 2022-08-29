@@ -47,7 +47,7 @@ function ItemCarrinho({ item }) {
                     Remover item
                 </button>
             </div>
-            <div className='total-parcial'>Total:{total}</div>
+            <div className='total-parcial'>Total:{total.toFixed(2)}</div>
             <br />
             <hr />
         </>
