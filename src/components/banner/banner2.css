@@ -1,24 +1,24 @@
-.imgbanner1 {
+.imgbanner2 {
     height: 30vh;
     position: relative;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 
-    animation: BannerAnimation 30s infinite;
+    animation: BannerAnimation2 30s infinite;
 }
 
-@keyframes BannerAnimation {
+@keyframes BannerAnimation2 {
     0% {
-        background-image: url("./img/Banner1.png");
+        background-image: url("./img/Banner3.png");
     }
     100% {
-        background-image: url("./img/Banner2.png");
+        background-image: url("./img/Banner4.png");
     }
 }
 
 @media screen and (min-width: 1000px) {
-    .imgbanner1 {
+    .imgbanner2 {
         height: 550px;
     }
 }
