@@ -67,19 +67,21 @@ function Navbar() {
                             className='NavBar__Icon__bag'
                             onClick={() => setOpenModal(!openModal)}
                         />
-                        <sup
-                            style={{
-                                backgroundColor: "#c1b0ec",
-                                borderRadius: "50%",
-                                display: "inline-block",
-                                width: "15.5px",
-                                height: "15.5px",
-                                textAlign: "center",
-                                fontSize: "0.8rem",
-                            }}
-                        >
-                            {selectItens.length}
-                        </sup>
+                        {selectItens.length > 0 && (
+                            <sup
+                                style={{
+                                    backgroundColor: "#c1b0ec",
+                                    borderRadius: "50%",
+                                    display: "inline-block",
+                                    width: "15.5px",
+                                    height: "15.5px",
+                                    textAlign: "center",
+                                    fontSize: "0.8rem",
+                                }}
+                            >
+                                {selectItens.length}
+                            </sup>
+                        )}
                     </div>
                 </div>
                 {openModal && <Carrinho />}
