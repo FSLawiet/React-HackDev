@@ -3,7 +3,7 @@
 
     position: absolute;
 
-    height: 75vh;
+    max-height: 75vh;
 
     right: 10px;
     top: 55px;
@@ -12,7 +12,7 @@
 
     overflow: auto;
 
-    background-color: rgb(255, 255, 255);
+    background-color: #dadada;
 
     clip-path: polygon(51% 0, 51% 0, 51% 0, 52% 0);
 
@@ -21,87 +21,7 @@
 
 .Active {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
-.Teste1234 {
-    display: flex;
-}
-
-.name {
-    width: 315px;
-    height: 54px;
-
-    top: 43px;
-
-    font-family: "Raleway";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 41px;
-    text-align: center;
-
-    color: rgba(0, 0, 0, 0.8);
-}
-
-.price {
-    width: 130px;
-    height: 31px;
-    left: 550px;
-    top: 239px;
-
-    font-family: "Raleway";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 29px;
-
-    color: rgba(0, 0, 0, 0.8);
-}
-
-.Adicionar-Remover {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    column-gap: 5px;
-
-    width: 100px;
-
-    margin: auto;
-
-    border-radius: 20px;
-
-    background-color: #dadada;
-}
-
-.Qty__Button {
-    width: 30px;
-
-    font-size: 1rem;
-    font-weight: bold;
-
-    border: none;
-    background-color: #dadada;
-
-    cursor: pointer;
-}
-
-.Qty__Button:hover {
-    color: blueviolet;
-}
-
-.total-parcial {
-    width: 130px;
-    height: 31px;
-    left: 550px;
-    top: 239px;
-
-    font-family: "Raleway";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 25px;
-    line-height: 29px;
-
-    color: rgba(0, 0, 0, 0.8);
+    background-color: #fafafa;
 }
 
 .valorTotal {
@@ -115,12 +35,6 @@
     background-color: #dadada;
 
     margin-top: 15px;
-}
-
-.Imagem {
-    width: 100px;
-    left: 0px;
-    top: 0px;
 }
 
 .finalizar {

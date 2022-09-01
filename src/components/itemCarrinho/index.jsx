@@ -40,12 +40,16 @@ function ItemCarrinho({ item }) {
                         </button>
                     </div>
                 </div>
-                <button
+                <p
                     onClick={() => removeItemCart(item.id)}
-                    style={{ height: "30px" }}
+                    style={{
+                        textDecoration: "underline",
+                        color: "red",
+                        cursor: "pointer",
+                    }}
                 >
                     Remover item
-                </button>
+                </p>
             </div>
             <div className='total-parcial'>Total:{total.toFixed(2)}</div>
             <br />

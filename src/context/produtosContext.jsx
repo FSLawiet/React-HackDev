@@ -1,21 +1,27 @@
 import { createContext, useState } from "react";
-import { Produtos } from "../Data/dataProduct";
 
 export const ProductContext = createContext();
 
 function ProductContexProvider({ children }) {
-    const [data] = useState(Produtos);
     const [selectItens, setSelectItens] = useState([]);
 
     function addItemCart(value, item) {
-        data.forEach((element) => {
+        let contains = false;
+
+        if (!selectItens.length) {
+            setSelectItens((prev) => [...prev, { ...item, sizeSelect: value }]);
+            return;
+        }
+
+        selectItens.forEach((element) => {
             if (element.id === item.id) {
-                setSelectItens((prev) => [
-                    ...prev,
-                    { ...item, sizeSelect: value },
-                ]);
+                console.log("Tem iguais");
+                contains = true;
+                return;
             }
         });
+        if (!contains)
+            setSelectItens((prev) => [...prev, { ...item, sizeSelect: value }]);
     }
 
     function removeItemCart(item) {

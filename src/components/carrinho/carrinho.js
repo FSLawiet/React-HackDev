@@ -3,6 +3,7 @@ import "./carrinho.css";
 import { ProductContext } from "../../context/produtosContext";
 import ItemCarrinho from "../itemCarrinho/index";
 import { useNavigate } from "react-router-dom";
+import CarrinhoVazio from "./img/baagg.png";
 
 const Carrinho = () => {
     const { selectItens } = useContext(ProductContext);
@@ -34,7 +35,7 @@ const Carrinho = () => {
                     </div>
                 </>
             ) : (
-                <h2>Sem itens!</h2>
+                <img src={CarrinhoVazio} alt='Carrinho Vazio' width={400} />
             )}
         </div>
     );

@@ -8,8 +8,8 @@ function Product() {
     return (
         <>
             {Produtos.map(
-                (item) =>
-                    item.id === Number(id) && <Produto item={item} id={id} />
+                (item, idx) =>
+                    item.id === Number(id) && <Produto item={item} key={idx} />
             )}
         </>
     );

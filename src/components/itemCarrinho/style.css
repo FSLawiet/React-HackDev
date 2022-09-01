@@ -1,28 +1,3 @@
-.Container__carrinho {
-    z-index: 10;
-
-    position: absolute;
-
-    height: 75vh;
-
-    right: 10px;
-    top: 55px;
-
-    padding: 50px 10px;
-
-    overflow: auto;
-
-    background-color: rgb(255, 255, 255);
-
-    clip-path: polygon(51% 0, 51% 0, 51% 0, 52% 0);
-
-    transition: all 0.4s ease-in-out;
-}
-
-.Active {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-}
-
 .Teste1234 {
     display: flex;
 }
@@ -104,36 +79,8 @@
     color: rgba(0, 0, 0, 0.8);
 }
 
-.valorTotal {
-    display: flex;
-    flex-direction: column;
-
-    font-size: 1rem;
-    line-height: 33px;
-
-    color: rgba(0, 0, 0, 0.8);
-    background-color: #dadada;
-
-    margin-top: 15px;
-}
-
 .Imagem {
     width: 100px;
     left: 0px;
     top: 0px;
-}
-
-.finalizar {
-    width: 90%;
-
-    margin: auto;
-    margin-bottom: 15px;
-    padding: 5px 10px;
-
-    left: 40px;
-    top: 99px;
-
-    background: rgba(255, 255, 255, 0.62);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
 }
