@@ -12,7 +12,7 @@
 
     overflow: auto;
 
-    background-color: #dadada;
+    background-color: #f6f6f6;
 
     clip-path: polygon(51% 0, 51% 0, 51% 0, 52% 0);
 
@@ -21,7 +21,7 @@
 
 .Active {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    background-color: #fafafa;
+    background-color: #f6f6f6;
 }
 
 .valorTotal {

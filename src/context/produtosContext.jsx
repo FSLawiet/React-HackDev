@@ -16,6 +16,7 @@ function ProductContexProvider({ children }) {
         selectItens.forEach((element) => {
             if (element.id === item.id) {
                 console.log("Tem iguais");
+                alert("Produto já existe!");
                 contains = true;
                 return;
             }
