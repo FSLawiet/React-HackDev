@@ -1,8 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import CheckoutPedido from "../components/checkout/CheckoutPedido";
 import CheckoutEnvio from "../components/checkout/CheckoutEnvio";
 import CheckoutResumo from "../components/checkout/CheckoutResumo";
-import Cupons from "../Data/dataCupons";
+import axios from "axios";
 import { ProductContext } from "../context/produtosContext";
 
 import "./Checkout.css";
@@ -39,6 +39,18 @@ function Checkout() {
       preco: 90.0,
     },
   ]);
+
+  const [cupons, setCupons] = useState([]);
+  useEffect(() => {
+    axios({
+      url: "https://hoshi-api.herokuapp.com/cupons",
+      method: "get",
+    }).then((resp) => {
+      console.log(cupons);
+      setCupons(resp.data);
+      console.log(cupons);
+    });
+  });
 
   const handleQtClickMinus = (ref) => {
     let updatedCarrinho = carrinho.map((p) => {
@@ -142,7 +154,7 @@ function Checkout() {
   const handleDesconto = (event, codigo) => {
     event.preventDefault();
 
-    Cupons.foreach((cupom) => {
+    cupons.foreach((cupom) => {
       if (cupom.codigo === codigo && cupom.validade >= new Date()) {
         console.log("Deu certo!");
         setCompra({
