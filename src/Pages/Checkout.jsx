@@ -8,9 +8,9 @@ import { ProductContext } from "../context/produtosContext";
 import "./Checkout.css";
 
 function Checkout() {
-  const { selectItens, setSelectItens, addItemCart, removeItemCart } =
+  /*const { selectItens, setSelectItens, addItemCart, removeItemCart } =
     useContext(ProductContext);
-
+*/
   //TODO integração de context
 
   //objeto fixo de carrinho
