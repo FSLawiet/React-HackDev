@@ -12,7 +12,7 @@ function CheckoutEnvio({
       <details>
         <summary>Envio</summary>
         <div id="endereco_cont">
-          {user.adr.map((a, i) => (
+          {user.enderecos.map((a, i) => (
             <div key={i}>
               <CardEndereco
                 id={a.id}

@@ -12,9 +12,7 @@ function Product() {
       url: "https://hoshi-api.herokuapp.com/produtos?id=" + id,
       method: "get",
     }).then((resp) => {
-      console.log(produto);
       setProduto(resp.data);
-      console.log(produto);
     });
   });
 

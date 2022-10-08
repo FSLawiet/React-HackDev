@@ -9,7 +9,7 @@ function ItemCarrinho({ item }) {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    setTotal(mult * item.price);
+    setTotal(mult * item.valor);
   }, [mult, item]);
 
   return (

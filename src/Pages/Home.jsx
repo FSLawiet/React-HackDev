@@ -14,10 +14,7 @@ function Home() {
     axios({
       url: "https://hoshi-api.herokuapp.com/produtos",
       method: "get",
-    }).then((resp) => {
-      console.log(resp.data);
-      setProdutos(resp.data);
-    });
+    }).then((resp) => setProdutos(resp.data));
   });
 
   return (

@@ -1,10 +1,5 @@
 import "./CheckoutPedido.css";
-function CheckoutPedido({
-  pedidos,
-  handleQtClickMinus,
-  handleQtClickPlus,
-  handleDeletePedido,
-}) {
+function CheckoutPedido({ pedidos, handleDeletePedido }) {
   return (
     <section id="pedido">
       <span>
@@ -25,59 +20,35 @@ function CheckoutPedido({
           {pedidos.map((pedido, i) => (
             <tr id="produtos_body" key={i}>
               <td className="produto_img">
-                <img src={pedido.img} alt={pedido.nome} />
+                <img
+                  src={"data:image/png;base64," + pedido.img}
+                  alt={pedido.peca}
+                />
               </td>
               <td>
-                <p className="produto_nome">{pedido.nome}</p>
-                <p className="produto_ref">Referência {pedido.ref}</p>
-                {pedido.attr.map((a, i) => (
-                  <p className="produto_atributo" key={i}>
-                    <span>{a.tipo}:&nbsp;</span>
-                    <span>
-                      <strong>{a.desc}</strong>
-                    </span>
-                  </p>
-                ))}
-                <div className="stepper">
-                  <button
-                    className="stepper__button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleQtClickMinus(pedido.ref);
-                    }}
-                  >
-                    -
-                  </button>
-                  <div className="stepper__content">
-                    <p className="stepper__value">{pedido.qt}</p>
-                  </div>
-                  <button
-                    className="stepper__button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      handleQtClickPlus(pedido.ref);
-                    }}
-                  >
-                    +
-                  </button>
-                </div>
+                <p className="produto_nome">{pedido.peca}</p>
+                <p className="produto_ref">Referência {pedido.id}</p>
+                <p className="produto_atributo" key={i}>
+                  <span>Tamanho&nbsp;</span>
+                  <span>
+                    <strong>{pedido.tamanho}</strong>
+                  </span>
+                </p>
               </td>
               <td id="preco">
                 <p className="produto_preco">
-                  <span className="dashed">
-                    R$ {pedido.preco_int.toFixed(2)}
-                  </span>
+                  <span className="dashed">R$ {pedido.valor}</span>
                 </p>
                 <p className="produto_preco">
-                  <span>R$ {pedido.preco.toFixed(2)}</span>
+                  <span>R$ {pedido.valor}</span>
                 </p>
                 <p className="produto_preco produto_total">
-                  <span>R$ {(pedido.qt * pedido.preco).toFixed(2)}</span>
+                  <span>R$ {pedido.valor}</span>
                 </p>
               </td>
               <td>
                 <div
-                  onClick={() => handleDeletePedido(pedido.ref)}
+                  onClick={() => handleDeletePedido(pedido)}
                   className="delete_produto"
                 >
                   <i className="fa-solid fa-xl fa-xmark"></i>

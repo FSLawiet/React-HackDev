@@ -8,101 +8,26 @@ import { ProductContext } from "../context/produtosContext";
 import "./Checkout.css";
 
 function Checkout() {
-  /*const { selectItens, setSelectItens, addItemCart, removeItemCart } =
-    useContext(ProductContext);
-*/
-  //TODO integração de context
-
-  //objeto fixo de carrinho
-  const [carrinho, setCarrinho] = useState([
-    {
-      nome: "Kit Amortecedor Teste - Virtual",
-      ref: "04357",
-      img: "./img/prod1.png",
-      attr: [],
-      qt: 5,
-      preco_int: 3000.0,
-      preco: 180.0,
-    },
-    {
-      nome: "Celular",
-      ref: "5675675",
-      img: "./img/prod2.png",
-      attr: [
-        {
-          tipo: "Cor",
-          desc: "Medium Brown",
-        },
-      ],
-      qt: 5,
-      preco_int: 10000.0,
-      preco: 90.0,
-    },
-  ]);
+  const { selectItens, removeItemCart } = useContext(ProductContext);
 
   const [cupons, setCupons] = useState([]);
+  //objeto fixo de usuário (com os endereços)
+  const [usuario, setUsuario] = useState([]);
   useEffect(() => {
     axios({
       url: "https://hoshi-api.herokuapp.com/cupons",
       method: "get",
     }).then((resp) => {
-      console.log(cupons);
       setCupons(resp.data);
-      console.log(cupons);
+    });
+    axios({
+      url: "https://hoshi-api.herokuapp.com/users?id=1",
+      method: "get",
+    }).then((resp) => {
+      setUsuario(resp.data[0]);
     });
   });
 
-  const handleQtClickMinus = (ref) => {
-    let updatedCarrinho = carrinho.map((p) => {
-      if (p.ref === ref && p.qt > 1) {
-        return { ...p, qt: p.qt - 1 };
-      }
-      return p;
-    });
-    setCarrinho(updatedCarrinho);
-  };
-  const handleQtClickPlus = (ref) => {
-    let updatedCarrinho = carrinho.map((p) => {
-      if (p.ref === ref) {
-        return { ...p, qt: p.qt + 1 };
-      }
-      return p;
-    });
-    setCarrinho(updatedCarrinho);
-  };
-
-  const handleDeletePedido = (ref) => {
-    let updatedCarrinho = carrinho.filter((p) => p.ref !== ref);
-    setCarrinho(updatedCarrinho);
-  };
-
-  //objeto fixo de usuário (com os endereços)
-  const [user] = useState({
-    adr: [
-      {
-        id: 1,
-        nome: "Robson",
-        apelido: "Casa",
-        rua: "Alameda dos Jacarandás",
-        numero: 140,
-        bairro: "São Luiz",
-        cidade: "Belo Horizonte",
-        estado: "MG",
-        cep: "31275-060",
-      },
-      {
-        id: 2,
-        nome: "Celeste",
-        apelido: "Trabalho",
-        rua: "Alameda dos Jacarandás",
-        numero: 140,
-        bairro: "São Luiz",
-        cidade: "Belo Horizonte",
-        estado: "MG",
-        cep: "31275-060",
-      },
-    ],
-  });
   const [compra, setCompra] = useState({
     adr_id: 0,
     forma_envio: 1,
@@ -153,9 +78,9 @@ function Checkout() {
 
   const handleDesconto = (event, codigo) => {
     event.preventDefault();
-
-    cupons.foreach((cupom) => {
-      if (cupom.codigo === codigo && cupom.validade >= new Date()) {
+    console.log(cupons, codigo);
+    cupons.forEach((cupom) => {
+      if (cupom.codigo === codigo) {
         console.log("Deu certo!");
         setCompra({
           adr_id: compra.adr_id,
@@ -178,11 +103,13 @@ function Checkout() {
         url: "https://hoshi-api.herokuapp.com/pedidos",
         method: "post",
         data: {
-          adr_id,
-          forma_envio,
-          obs,
-          forma_pagamento,
-          desconto,
+          usuario: usuario.id,
+          adr_id: compra.adr_id,
+          forma_envio: compra.forma_envio,
+          obs: compra.obs,
+          forma_pagamento: compra.forma_pagamento,
+          desconto: compra.desconto,
+          produtos: selectItens,
         },
       }).then((resp) => alert("Compra Finalizada!\n" + resp));
     } else return null;
@@ -217,28 +144,28 @@ function Checkout() {
         onSubmit={
           compra.adr_id === 0 ||
           compra.forma_pagamento === 0 ||
-          carrinho.length === 0
+          selectItens.length === 0
             ? (e) => handleCompra(e, false)
             : (e) => handleCompra(e, true)
         }
       >
         <CheckoutPedido
-          pedidos={carrinho}
-          handleQtClickMinus={handleQtClickMinus}
-          handleQtClickPlus={handleQtClickPlus}
-          handleDeletePedido={handleDeletePedido}
+          pedidos={selectItens}
+          handleDeletePedido={removeItemCart}
         />
         <CheckoutEnvio
-          user={user}
+          user={usuario}
           forma_envio={forma_envio}
           handleAdressChange={handleAdressChange}
           handleFormaPagamentoChange={handleFormaPagamentoChange}
           handleObsChange={handleObsChange}
         />
         <CheckoutResumo
-          subtotal={carrinho.reduce((a, p) => {
-            return a + p.qt * p.preco;
-          }, 0)}
+          subtotal={parseFloat(
+            selectItens.reduce((a, p) => {
+              return a + parseFloat(p.valor);
+            }, 0)
+          ).toFixed(2)}
           desconto={compra.desconto}
           forma_envio={forma_envio}
           forma_envio_selec={
@@ -249,7 +176,7 @@ function Checkout() {
           validateForm={
             compra.adr_id === 0 ||
             compra.forma_pagamento === 0 ||
-            carrinho.length === 0
+            selectItens.length === 0
               ? false
               : true
           }

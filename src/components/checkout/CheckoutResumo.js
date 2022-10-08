@@ -41,7 +41,7 @@ function CheckoutResumo({
               <p className="prices-header">Subtotal</p>
             </td>
             <td className="row-div">
-              <p className="prices">R$ {subtotal.toFixed(2)}</p>
+              <p className="prices">R$ {subtotal}</p>
             </td>
           </tr>
           <tr>{showDesconto()}</tr>
@@ -52,7 +52,7 @@ function CheckoutResumo({
             <td className="row-div">
               <p className="prices">
                 {forma_envio_selec.preco > 0
-                  ? "+ R$ " + forma_envio_selec.preco.toFixed(2)
+                  ? "+ R$ " + parseFloat(forma_envio_selec.preco).toFixed(2)
                   : "Grátis"}
               </p>
             </td>
@@ -65,33 +65,43 @@ function CheckoutResumo({
               <p className="prices total">
                 R${" "}
                 {desconto !== 1
-                  ? (
-                      subtotal -
-                      subtotal * desconto +
-                      forma_envio_selec.preco
+                  ? parseFloat(
+                      parseFloat(subtotal) -
+                        parseFloat(subtotal) * desconto +
+                        parseFloat(forma_envio_selec.preco)
                     ).toFixed(2)
-                  : (subtotal + forma_envio_selec.preco).toFixed(2)}
+                  : parseFloat(
+                      parseFloat(subtotal) + parseFloat(forma_envio_selec.preco)
+                    ).toFixed(2)}
               </p>
               <p className="prices">
                 em até 3X de R${" "}
                 {desconto !== 1
                   ? (
-                      (subtotal -
-                        subtotal * desconto +
-                        forma_envio_selec.preco) /
-                      3
+                      parseFloat(
+                        parseFloat(subtotal) -
+                          parseFloat(subtotal) * desconto +
+                          parseFloat(forma_envio_selec.preco)
+                      ) / 3
                     ).toFixed(2)
-                  : ((subtotal + forma_envio_selec.preco) / 3).toFixed(2)}
+                  : (
+                      parseFloat(
+                        parseFloat(subtotal) +
+                          parseFloat(forma_envio_selec.preco)
+                      ) / 3
+                    ).toFixed(2)}
               </p>
               <p className="prices">
                 ou R${" "}
                 {desconto !== 1
-                  ? (
-                      subtotal -
-                      subtotal * desconto +
-                      forma_envio_selec.preco
+                  ? parseFloat(
+                      parseFloat(subtotal) -
+                        parseFloat(subtotal) * desconto +
+                        parseFloat(forma_envio_selec.preco)
                     ).toFixed(2)
-                  : (subtotal + forma_envio_selec.preco).toFixed(2)}{" "}
+                  : parseFloat(
+                      parseFloat(subtotal) + parseFloat(forma_envio_selec.preco)
+                    ).toFixed(2)}{" "}
                 no
               </p>
               <p className="prices">

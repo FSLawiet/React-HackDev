@@ -22,7 +22,7 @@ function ProductContexProvider({ children }) {
       }
     });
     if (!contains)
-      setSelectItens((prev) => [...prev, { ...item, sizeSelect: value }]);
+      setSelectItens((prev) => [...prev, { ...item, tamanho: value }]);
   }
 
   function removeItemCart(item) {
