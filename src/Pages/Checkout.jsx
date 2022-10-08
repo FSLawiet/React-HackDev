@@ -11,8 +11,6 @@ function Checkout() {
   const { selectItens, removeItemCart } = useContext(ProductContext);
 
   const [cupons, setCupons] = useState([]);
-  //objeto fixo de usuário (com os endereços)
-  const [usuario, setUsuario] = useState([]);
   useEffect(() => {
     axios({
       url: "https://hoshi-api.herokuapp.com/cupons",
@@ -20,13 +18,53 @@ function Checkout() {
     }).then((resp) => {
       setCupons(resp.data);
     });
+  }, []);
+
+  //objeto fixo de usuário (com os endereços)
+  const [usuario, setUsuario] = useState({
+    id: 1,
+    nome: "Robsonvaldo",
+    username: "robson_kallisti",
+    senha: "oooooooooooooooh",
+    email:
+      "robson_kallisti@watmail.com                                                                         ",
+    telefone: "+5562981380914",
+    enderecos: [
+      {
+        id: 1,
+        nome: "Robsonvaldo",
+        apelido: "Casa",
+        rua: "Alameda dos Jacarandás",
+        numero: 140,
+        bairro: "São Luiz",
+        cidade: "Belo Horizonte",
+        estado: "MG",
+        cep: "31275060",
+        usuario: 1,
+      },
+      {
+        id: 2,
+        nome: "Celeste",
+        apelido: "Trabalho",
+        rua: "Alameda dos Jacarandás",
+        numero: 140,
+        bairro: "São Luiz",
+        cidade: "Belo Horizonte",
+        estado: "MG",
+        cep: "31275060",
+        usuario: 1,
+      },
+    ],
+  });
+
+  useEffect(() => {
     axios({
       url: "https://hoshi-api.herokuapp.com/users?id=1",
       method: "get",
     }).then((resp) => {
       setUsuario(resp.data[0]);
     });
-  });
+  }, []);
 
   const [compra, setCompra] = useState({
     adr_id: 0,
@@ -111,7 +149,9 @@ function Checkout() {
           desconto: compra.desconto,
           produtos: selectItens,
         },
-      }).then((resp) => alert("Compra Finalizada!\n" + resp));
+      })
+        .then((resp) => alert("Compra Finalizada!\n" + resp))
+        .catch((error) => alert("Erro na compra!\n" + error));
     } else return null;
   };
 
@@ -154,7 +194,7 @@ function Checkout() {
           handleDeletePedido={removeItemCart}
         />
         <CheckoutEnvio
-          user={usuario}
+          usuario={usuario}
           forma_envio={forma_envio}
           handleAdressChange={handleAdressChange}
           handleFormaPagamentoChange={handleFormaPagamentoChange}

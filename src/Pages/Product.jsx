@@ -14,7 +14,7 @@ function Product() {
     }).then((resp) => {
       setProduto(resp.data);
     });
-  });
+  }, [id]);
 
   return (
     <>

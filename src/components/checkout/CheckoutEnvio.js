@@ -1,7 +1,7 @@
 import CardEndereco from "./CardEndereco";
 import "./CheckoutEnvio.css";
 function CheckoutEnvio({
-  user,
+  usuario,
   handleAdressChange,
   handleObsChange,
   handleFormaPagamentoChange,
@@ -10,23 +10,23 @@ function CheckoutEnvio({
     <section id="envio">
       <h3>Destino</h3>
       <details>
-        <summary>Envio</summary>
+        <summary>Envio para {usuario.nome}</summary>
         <div id="endereco_cont">
-          {user.enderecos.map((a, i) => (
-            <div key={i}>
-              <CardEndereco
-                id={a.id}
-                apelido={a.apelido}
-                nome={a.nome}
-                rua={a.rua}
-                numero={a.rua}
-                bairro={a.bairro}
-                cidade={a.cidade}
-                estado={a.estado}
-                cep={a.cep}
-                handleAdressChange={handleAdressChange}
-              />
-            </div>
+          {usuario.enderecos.map((endereco, i) => (
+            <CardEndereco
+              userId={usuario.id}
+              id={endereco.id}
+              apelido={endereco.apelido}
+              nome={endereco.nome}
+              rua={endereco.rua}
+              numero={endereco.rua}
+              bairro={endereco.bairro}
+              cidade={endereco.cidade}
+              estado={endereco.estado}
+              cep={endereco.cep}
+              handleAdressChange={handleAdressChange}
+              key={i}
+            />
           ))}
         </div>
       </details>

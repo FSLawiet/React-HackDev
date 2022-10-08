@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 
 export const ProductContext = createContext();
 
-function ProductContexProvider({ children }) {
+function ProductContextProvider({ children }) {
   const [selectItens, setSelectItens] = useState([]);
 
   function addItemCart(value, item) {
@@ -41,4 +41,4 @@ function ProductContexProvider({ children }) {
     </ProductContext.Provider>
   );
 }
-export default ProductContexProvider;
+export default ProductContextProvider;

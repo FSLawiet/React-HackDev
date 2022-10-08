@@ -15,7 +15,7 @@ function Home() {
       url: "https://hoshi-api.herokuapp.com/produtos",
       method: "get",
     }).then((resp) => setProdutos(resp.data));
-  });
+  }, []);
 
   return (
     <>

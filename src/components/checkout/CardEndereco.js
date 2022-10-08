@@ -2,6 +2,7 @@ import React from "react";
 import "./CardEndereco.css";
 
 function CardEndereco({
+  userId,
   id,
   apelido,
   nome,
