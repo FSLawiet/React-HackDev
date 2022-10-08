@@ -173,8 +173,19 @@ function Checkout() {
     //TODO
     event.preventDefault();
 
-    if (valid) alert("Compra Finalizada!");
-    else return null;
+    if (valid) {
+      axios({
+        url: "https://hoshi-api.herokuapp.com/pedidos",
+        method: "post",
+        data: {
+          adr_id,
+          forma_envio,
+          obs,
+          forma_pagamento,
+          desconto,
+        },
+      }).then((resp) => alert("Compra Finalizada!\n" + resp));
+    } else return null;
   };
 
   //formas de envio (fixas, banco de dados?)
