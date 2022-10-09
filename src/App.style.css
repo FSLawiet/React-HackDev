@@ -3,3 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* It targets only the app used with a system icon in standalone mode */
+@media (display-mode: standalone) {
+  body {
+    overscroll-behavior-y: contain;
+  }
+}

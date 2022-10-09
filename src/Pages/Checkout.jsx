@@ -137,18 +137,28 @@ function Checkout() {
     event.preventDefault();
 
     if (valid) {
+      const produtos = [];
+      selectItens.forEach((item) => {
+        produtos.push({
+          id: item.id,
+          tamanho: item.tamanho,
+        });
+      });
+
+      const pedido = {
+        usuario: usuario.id,
+        adr_id: compra.adr_id,
+        forma_envio: compra.forma_envio,
+        obs: compra.obs,
+        forma_pagamento: compra.forma_pagamento,
+        desconto: parseFloat(compra.desconto),
+        produtos: produtos,
+      };
+      console.log(pedido);
       axios({
         url: "https://hoshi-api.herokuapp.com/pedidos",
         method: "post",
-        data: {
-          usuario: usuario.id,
-          adr_id: compra.adr_id,
-          forma_envio: compra.forma_envio,
-          obs: compra.obs,
-          forma_pagamento: compra.forma_pagamento,
-          desconto: compra.desconto,
-          produtos: selectItens,
-        },
+        data: pedido,
       })
         .then((resp) => alert("Compra Finalizada!\n" + resp))
         .catch((error) => alert("Erro na compra!\n" + error));
