@@ -62,7 +62,6 @@ function Checkout() {
       url: "https://hoshi-api.herokuapp.com/users?id=1",
       method: "get",
     }).then((resp) => {
-      console.log(resp.data);
       setUsuario(resp.data);
     });
   }, []);
@@ -117,10 +116,8 @@ function Checkout() {
 
   const handleDesconto = (event, codigo) => {
     event.preventDefault();
-    console.log(cupons, codigo);
     cupons.forEach((cupom) => {
       if (cupom.codigo === codigo) {
-        console.log("Deu certo!");
         setCompra({
           adr_id: compra.adr_id,
           forma_envio: compra.forma_envio,
@@ -155,13 +152,12 @@ function Checkout() {
         desconto: parseFloat(compra.desconto),
         produtos: produtos,
       };
-      console.log(pedido);
       axios({
         url: "https://hoshi-api.herokuapp.com/pedidos",
         method: "post",
         data: pedido,
       })
-        .then((resp) => alert("Compra Finalizada!\n" + resp.data))
+        .then((resp) => alert("Compra Finalizada!\n" + resp.data.data))
         .catch((error) => alert("Erro na compra!\n" + error));
     } else return null;
   };
