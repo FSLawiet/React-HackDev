@@ -139,7 +139,7 @@ function Checkout() {
       const produtos = [];
       selectItens.forEach((item) => {
         produtos.push({
-          id: item.id,
+          produto: item.id,
           tamanho: item.tamanho,
         });
       });
@@ -153,6 +153,7 @@ function Checkout() {
         desconto: parseFloat(compra.desconto),
         produtos: produtos,
       };
+      console.log(pedido);
       axios({
         url: "https://hoshi-api.herokuapp.com/pedidos",
         method: "post",
