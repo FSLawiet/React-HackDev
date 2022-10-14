@@ -160,7 +160,7 @@ function Checkout() {
         method: "post",
         data: pedido,
       })
-        .then((resp) => alert("Compra Finalizada!\n" + resp))
+        .then((resp) => alert("Compra Finalizada!\n" + resp.data))
         .catch((error) => alert("Erro na compra!\n" + error));
     } else return null;
   };
