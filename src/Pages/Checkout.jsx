@@ -62,7 +62,7 @@ function Checkout() {
       url: "https://hoshi-api.herokuapp.com/users?id=1",
       method: "get",
     }).then((resp) => {
-      setUsuario(resp.data[0]);
+      setUsuario(resp.data);
     });
   }, []);
 
